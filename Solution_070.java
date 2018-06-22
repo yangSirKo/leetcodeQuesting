@@ -1,30 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
 	假设你正在爬楼梯。需要 n 步你才能到达楼顶。
 	每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
 	注意：给定 n 是一个正整数。
 
 	示例 1：
-	输入： 2  输出： 2
+	输入： 2       输出： 2
 	解释： 有两种方法可以爬到楼顶。
 	1.  1 步 + 1 步
 	2.  2 步
  */
 public class Solution_070 {
 	
-	public static int n = 5;
 	// 记忆化搜索的辅助空间
-	public static int[] memo2 = new int[n+1];
-
+	public static int[] memo2;
+	
 	public static void main(String[] args) {
+    	
+		int n = 5;
+		// 动规
 		int num = climbStairs(n);
-    	System.out.println("动规：" + num);
+    	System.out.println(num);
 
     	// 记忆化搜索
+    	memo2 = new int[n+1];
     	int num2 = climbStairs2(n);
-    	System.out.println("记忆化搜索："+num2);
+    	System.out.println(num2);
 	}
 	
     // 动态规划 - 自上而下的解决问题
