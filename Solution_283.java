@@ -19,11 +19,10 @@ class Solution {
             if(nums[zeroFlag] != 0){
                 zeroFlag ++;
             }
-			// 当前非零元素如果在 zeroFlag之后，则交换位置。  此时[zeroFlag...i)间的元素都为 0。 
-            if(nums[i] != 0 && i > zeroFlag){
-                int temp = nums[i];
-                nums[i] = nums[zeroFlag];
-                nums[zeroFlag] = temp;
+			// 当前非零元素如果在 zeroFlag之后，则交换位置。  [zeroFlag...i)间的元素都为 0。 
+		    if(nums[i] != 0 && i > zeroFlag){
+                nums[zeroFlag] = nums[i];
+                nums[i] = 0;
                 zeroFlag++;
             }
         }
