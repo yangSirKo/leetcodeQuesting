@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 /** 
     问题：无重复字符的最长子串
 	给定一个字符串，找出不含有重复字符的最长子串的长度。
@@ -44,4 +41,33 @@ public class Solution_003 {
 		}
 		return length;
 	}
+}
+
+// 优化算法，  空间复杂度为 O(1)
+class Solution {
+    
+    public int lengthOfLongestSubstring(String s) {
+
+        if(s == null || s == ""){
+			return 0;
+		}
+        
+        // 采用滑动窗口的方式
+        int start = 0;   // 最长子串起始位置
+        int max = 0;  // 当前子串长度
+        Map<Character, Integer> map = new HashMap<>();
+
+        // char[] sChar = s.toCharArray();
+        char c = ' ';
+        for(int i=0; i<s.length(); i++){
+            c = s.charAt(i);
+            if(map.containsKey(c) && map.get(c) >= start)
+                start = map.get(c) + 1;
+
+            map.put(c , i);
+
+            max = Math.max( max , i-start+1);
+        }
+        return max;
+    }
 }
